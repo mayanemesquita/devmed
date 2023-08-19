@@ -1,0 +1,16 @@
+@startuml
+!include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(person_medico, "Medico", "")
+Person(person_paciente, "Paciente", "")
+Person(person_assistente, "Assistente", "")
+System(systemAlias, "DevMed", "Sistema de Prontuario Eletronico")
+System_Ext(systeExtmAlias, "Sistemas Externos", "Email, Pagamentos, Outros...")
+
+Rel(person_medico, systemAlias, "Uses", "HTTPS")
+Rel(person_paciente, systemAlias, "Uses", "HTTPS")
+Rel(person_assistente, systemAlias, "Uses", "HTTPS")
+Rel(systemAlias, systeExtmAlias, "Uses", "HTTPS, TCP, UDP")
+SHOW_FLOATING_LEGEND()
+
+@enduml
